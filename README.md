@@ -59,6 +59,9 @@ In this step we will prepare the submission files for batch and individual sampl
       -  Easy submit multiple jobs with `sh step_2.sh`.
 
 ```
+cd CNVkit_pipeline
+perl 1_CNV.pl
+
 cd submission_files
 sh step_1.sh
 
