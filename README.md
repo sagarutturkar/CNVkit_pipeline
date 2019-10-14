@@ -2,7 +2,7 @@
 This pipeline prepares [CNVkit](https://cnvkit.readthedocs.io/en/stable/quickstart.html) steps for somatic CNV calling with WGS/WES data (BAM) to run on a cluster.
 
 ## Prerequisites:
-1. Pipeline assumes that you have the CNVkit installed and user is well-versed with CNVkit steps and documentation.
+1. Pipeline assumes that CNVkit is installed and user is well-versed with CNVkit steps and documentation.
 2. Pipeline is currently set to run on the Purdue University RCAC Clusters and may need updates to run on other clusters.
 
 ## Expected Input:
