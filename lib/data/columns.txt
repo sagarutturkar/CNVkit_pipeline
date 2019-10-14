@@ -1,0 +1,18 @@
+		
+	Column_name	Description
+	Chromosome	Chromosome
+	Start	Start coordinate
+	End	End coordinate
+	Gene	Gene ID/Name
+	Log2	The Log2 Ratio Value of the Corresponding Bin
+	Cn	Absolute Integer Copy Number Value
+	Depth	Weighted Mean of Un-Normalized Read Depths
+	Probes	Number of Supporting Probes
+	Weight	Sum of Bin Weights
+	N_bins	Number of bins
+	Segment_weight	Sum of the weights of the bins supporting the segment
+	Segment_probes	Number of probes supporting the segment
+	Location	End of the Segment to the Left of the Breakpoint, and Start of the Segment To the Right.
+	Change	Difference In Log2 Values Between the Adjacent Segments
+	Probes_left	Number of probes on left side of the breakpoint within the gene
+	Probes_right	Number of probes on right side of the breakpoint within the gene
