@@ -6,7 +6,6 @@ Created on Mon Aug 26 21:23:13 2019
 """
 
 import pandas as pd
-import os
 import argparse
 
 ap = argparse.ArgumentParser()
@@ -21,9 +20,6 @@ ap.add_argument("-prefix", "--prefix", required=True,
 
 args = vars(ap.parse_args())
 
-
-#os.chdir('Z:/Scripts/Python/CNVkit/')
-#print(os.getcwd())
 
 #read input
 ratio_genes   = str(args['ratio_genes'])
