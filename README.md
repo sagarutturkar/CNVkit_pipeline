@@ -93,7 +93,7 @@ python ../lib/scripts/make_ctable.py -infile  All_sample_cn.txt  -outfile  Ctabl
 ## Output files:
 A short description for each output file is provided. Please check [this link](https://cnvkit.readthedocs.io/en/stable/fileformats.html#) for detailed information.  
 
-Result files in the **/output/CNVkit** directory:
+### Result files in the **/output/CNVkit** directory:
 
 | File Name 	| File Description 	|
 |---------------------------------	|----------------------------------------------------------	|
@@ -107,10 +107,10 @@ Result files in the **/output/CNVkit** directory:
 | heatmap.png 	| Chromosme level copy number heatmap for multiple samples 	|
 
 
-### Example Heatmap:
+#### Example Heatmap:
 ![**Figure A**](/lib/data/heatmap.png) 
 
-Result files in the **/output/\<SAMPLE\>** directory:
+### Result files in the **/output/\<SAMPLE\>** directory:
 
 | File Name 	| File Description 	|
 |--------------------------------	|----------------------------------------------------------------------	|
@@ -126,10 +126,10 @@ Result files in the **/output/\<SAMPLE\>** directory:
 | *_tumor.call.filtered.cns 	| Estimated absolute integer copy number for each segment 	|
 | *_tumor.segmetrics.cns 	| summary statistics of the residual bin-level log2 ratio estimates 	|
 
-### Example Diagram plot:
+#### Example Diagram plot:
 ![**Figure B**](/lib/data/T1_diagram.png) 
 
-### Example Scatter plot:
+#### Example Scatter plot:
 ![**Figure C**](/lib/data/T1_scatter.png) 
 
 #### Estimated absolute integer copy number for each segment available in the file *_tumor.call.filtered.cns:
