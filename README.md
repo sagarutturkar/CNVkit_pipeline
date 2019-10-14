@@ -6,7 +6,7 @@ This pipeline prepares [CNVkit](https://cnvkit.readthedocs.io/en/stable/quicksta
 2. Pipeline is currently set to run on the Purdue University RCAC Clusters and may need updates to run on other clusters.
 
 ## Expected Input:
-1. Indexed BAM files for tumor and normal samples. BAM files generated through GATK best practises works.
+1. Indexed BAM files for tumor and normal samples. BAM files generated through GATK best practices works.
 2. Tumor and Normal samples should be named with suffix `_tumor` and `_normal`, respectively.
 
 Example input files for the two samples `T1` and `T2`.
@@ -24,9 +24,9 @@ In this step, we will prepare the pipeline, set the parameters and copy the inpu
 
 1. Create empty directory and clone the repository.
 2. Set the appropriate parameters in the file `parameters.ini`.
-3. Prpeare the pipeline with command `sh prepare_CNVkit.sh`.
+3. Prepare the pipeline with command `sh prepare_CNVkit.sh`.
 4. Link or copy the BAM files to `input` directory. 
-5. Follow the above naming convension for input BAMs. 
+5. Follow the above naming convention for input BAMs. 
 
 ```
 # Clone repository
@@ -90,8 +90,72 @@ find `pwd` -name "*trusted*" | xargs -I {} sh -c " tail -n+2 {} | cat" > All_sam
 python ../lib/scripts/make_ctable.py -infile  All_sample_cn.txt  -outfile  Ctable.txt
 ```
 
+## Output files:
+A short description for each output file is provided. Please check [this link](https://cnvkit.readthedocs.io/en/stable/fileformats.html#) for detailed information.  
+
+Result files in the **/output/CNVkit** directory:
+
+| File Name 	| File Description 	|
+|---------------------------------	|----------------------------------------------------------	|
+| *_normal.antitargetcoverage.cnn 	| bin-level anticoverage file Normal sample 	|
+| *_normal.targetcoverage.cnn 	| bin-level covarge file for normal sample 	|
+| *_tumor.antitargetcoverage.cnn 	| bin-level anticoverage file Tumor sample 	|
+| *_tumor.targetcoverage.cnn 	| bin-level covarge file for Tumor sample 	|
+| *_tumor.cnr 	| Bin-level log2 ratios by Sample 	|
+| *_tumor.cns 	| Segmented log2 ratios by Sample 	|
+| reference.cnn 	| Copy number reference profile (All Normal Samples) 	|
+| heatmap.png 	| Chromosme level copy number heatmap for multiple samples 	|
 
 
+### Example Heatmap:
+![**Figure A**](/lib/data/heatmap.png) 
+
+Result files in the **/output/\<SAMPLE\>** directory:
+
+| File Name 	| File Description 	|
+|--------------------------------	|----------------------------------------------------------------------	|
+| *_Results.xlsx 	| Combined result files in excel format 	|
+| *_diagram.png 	| Copy number shown on each chromosome as an ideogram 	|
+| *_scatter.png 	| bin-level log2 coverages and segmentation calls plotted by chromosme 	|
+| *_genebreaks.txt 	| List the targeted genes in which a segmentation breakpoint occurs. 	|
+| *_genemetrics_with_ratio.txt 	| targeted genes with copy number gain or loss (by ratio) 	|
+| *_genemetrics_with_segment.txt 	| targeted genes with copy number gain or loss (by segment) 	|
+| *_ratio-genes.txt 	| genelist (by ratio) - 	|
+| *_segment-genes.txt 	| genelist (by segment) 	|
+| *_trusted_genes.txt 	| genelist and cn (affected by both ratio and segment) 	|
+| *_tumor.call.filtered.cns 	| Estimated absolute integer copy number for each segment 	|
+| *_tumor.segmetrics.cns 	| summary statistics of the residual bin-level log2 ratio estimates 	|
+
+### Example Diagram plot:
+![**Figure B**](/lib/data/T1_diagram.png) 
+
+### Example Scatter plot:
+![**Figure C**](/lib/data/T1_scatter.png) 
+
+#### Estimated absolute integer copy number for each segment available in the file *_tumor.call.filtered.cns:
+
+| Copy Number Call 	| Interpretation 	|
+|------------------	|-------------------------------------	|
+| 0 	| homozygous deletion (2-copy loss) 	|
+| 1 	| heterozygous deletion (1-copy loss) 	|
+| 2 	| normal diploid state 	|
+| 3 	| one copy gain 	|
+| 4 	| amplification (>= 2-copy gain) 	|
+
+#### Preview of contingency table of affected genes by sample in file Ctable.txt:
+1. The number in each column denotes the copy-number associated with specific sample 
+2. BLANK value denotes NO gain/loss detected.
+3. `Altered in Samples` denotes the total number of samples with gain/loss.
+
+| Gene_ID 	| T1 	| T10 	| T2 	| T3 	| T4 	| T6 	| T7 	| T8 	| T9 	| Altered in Samples 	|
+|--------------------	|----	|-----	|----	|----	|----	|----	|----	|----	|----	|--------------------	|
+| CSMD3 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| ENSCAFG00000038475 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| ENSCAFG00000036360 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| SLC30A8 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| ENSCAFG00000032793 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| ENSCAFG00000038488 	|  	| 3 	| 3 	| 3 	|  	| 4 	|  	| 3 	| 3 	| 6 	|
+| KCTD8 	|  	|  	| 3 	| 3 	| 0 	| 4 	|  	| 3 	| 3 	| 6 	|
 
 
 
