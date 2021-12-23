@@ -33,7 +33,7 @@ In this step, we will prepare the pipeline, set the parameters and copy the inpu
 git clone https://github.com/sagarutturkar/CNVkit_pipeline.git
 
 # Prepare Pipeline
-cd CNVkit_pipeline
+cd CNVkit_pipeline-master
 dos2unix prepare_CNVkit.sh.txt
 sh prepare_CNVkit.sh.txt
 
